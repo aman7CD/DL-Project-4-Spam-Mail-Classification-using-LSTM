@@ -48,7 +48,7 @@ sequences_matrix = pad_sequences(sequences,maxlen=max_len)
 # Keras Embedding Layer. Keras offers an Embedding layer that can be used for neural networks on text data. It requires that the input data be integer
 # encoded, so that each word is represented by a unique integer. ... It can be used to load a pre-trained word embedding model, a type of transfer learning
 
-def RNN():
+def LSTM():
     inputs = Input(name='inputs',shape=[max_len])
     layer = Embedding(max_words,50,input_length=max_len)(inputs)
     layer = LSTM(64)(layer)
@@ -60,7 +60,7 @@ def RNN():
     model = Model(inputs=inputs,outputs=layer)
     return model
 
-model = RNN()
+model = LSTM()
 model.summary()
 model.compile(loss='binary_crossentropy',optimizer=RMSprop(),metrics=['accuracy'])
 
